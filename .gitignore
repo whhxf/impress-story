@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+node_modules/
+.preview-state.json
+.wrangler/
+dist/
+*.zip
+.env
+.env.*
+!.env.example

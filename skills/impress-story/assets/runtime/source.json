@@ -1,0 +1,7 @@
+{
+  "source": "https://github.com/impress/impress.js/",
+  "file": "impress-pinned.js",
+  "sha256": "3e198709596c89695469b84da88a012015ae74388484a727eef13c4b1af0f644",
+  "license_file": "LICENSE-impress.txt",
+  "version_note": "Pinned local snapshot from the tested presentation. Bundled core header says 1.1.0; no upstream release-tag verification is claimed. Identify the runtime by SHA-256."
+}

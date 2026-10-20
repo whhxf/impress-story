@@ -1,0 +1,14 @@
+(()=>{'use strict';
+const root=document.getElementById('impress'),scenes=window.sceneConfig,byId=new Map(scenes.map(s=>[s.id,s])),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let current=scenes[0].id,reading=false;const api=impress();
+const update=id=>{if(!byId.has(id))return;current=id;document.querySelectorAll('.step').forEach(s=>s.classList.toggle('is-current',s.id===id));const n=scenes.findIndex(s=>s.id===id);document.getElementById('progress').textContent=`${n+1} / ${scenes.length}`;document.getElementById('prev').disabled=n===0;document.getElementById('next').disabled=n===scenes.length-1;document.getElementById('note-content').textContent=byId.get(id).notes||'';};
+const go=id=>{if(byId.has(id))api.goto(id,reduced?0:750);};
+const move=delta=>{const n=scenes.findIndex(s=>s.id===current)+delta;if(n>=0&&n<scenes.length)go(scenes[n].id);};
+root.dataset.transitionDuration=reduced?'0':'750';
+document.addEventListener('impress:stepenter',e=>{update(e.target.id);e.target.querySelector('h1')?.focus({preventScroll:true});});
+for(const [id,fn]of Object.entries({prev:()=>move(-1),next:()=>move(1),home:()=>go(scenes.find(s=>s.kind==='overview')?.id||scenes[0].id),'note-toggle':()=>{const notes=document.getElementById('notes');notes.hidden=!notes.hidden;document.getElementById('note-toggle').setAttribute('aria-expanded',String(!notes.hidden));},mode:()=>{reading=!reading;document.body.classList.toggle('reading',reading);document.getElementById('mode').textContent=reading?'返回演示':'阅读版';document.getElementById('notes').hidden=true;}}))document.getElementById(id).addEventListener('click',e=>{e.stopPropagation();fn();});
+// Own both phases so bundled navigation plugins cannot advance twice.
+for(const type of ['keydown','keyup'])document.addEventListener(type,e=>{if(reading||e.target.closest('input,textarea,select,[contenteditable],video,audio')||e.altKey||e.ctrlKey||e.metaKey)return;const direction=['ArrowRight','ArrowDown',' '].includes(e.key)?1:['ArrowLeft','ArrowUp'].includes(e.key)?-1:0;if(!direction&&e.key.toLowerCase()!=='h')return;e.preventDefault();e.stopImmediatePropagation();if(type==='keyup')return;if(direction)move(direction);else document.getElementById('home').click();},true);
+root.addEventListener('click',e=>{const target=e.target.closest('[data-go]');if(target){e.preventDefault();e.stopPropagation();go(target.dataset.go);}else if(e.target.closest('a,button,video,audio'))e.stopPropagation();});
+api.init();document.body.classList.add('enhanced');reading=matchMedia('(max-width:700px)').matches;document.body.classList.toggle('reading',reading);document.getElementById('mode').textContent=reading?'返回演示':'阅读版';update(decodeURIComponent(location.hash.replace(/^#\/?/,''))||scenes[0].id);window.presentationState=()=>({current,reading});
+})();

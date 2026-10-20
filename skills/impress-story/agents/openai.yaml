@@ -1,0 +1,4 @@
+interface:
+  display_name: "Impress 空间演示"
+  short_description: "用自然语言讲稿与图片影片制作空间叙事 HTML，并持续预览打磨"
+  default_prompt: "使用 $impress-story，根据我逐次提供的台词与素材，制作并打磨 impress.js 空间演示。"

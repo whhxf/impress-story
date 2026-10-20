@@ -1,0 +1,12 @@
+{
+  "family": "LXGW WenKai TC",
+  "weight": 400,
+  "sha256": "4fcc5aec11cbbf737b0cfab7b63796f7f280087a7a656b2f13342cd5e5318d95",
+  "bytes": 13110528,
+  "glyph_codepoints": 22401,
+  "source": "https://github.com/google/fonts/blob/main/ofl/lxgwwenkaitc/LXGWWenKaiTC-Regular.ttf",
+  "license": "SIL OFL 1.1",
+  "downloaded": "2026-10-20",
+  "file": "LXGWWenKaiTC-Regular.ttf",
+  "license_file": "OFL-LXGWWenKaiTC.txt"
+}
