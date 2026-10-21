@@ -4,7 +4,9 @@
 
 你用自然语言讲内容、提修改意见；AI 负责整理故事、设计图形关系、安排镜头，并生成可运行的 impress.js HTML。适合喜欢 Prezi 式缩放叙事，又不想手动排列坐标的人。
 
-[查看实际演示效果](https://kingsway-campus-talk.polyv.workers.dev/) · [Skill 入口](skills/impress-story/SKILL.md) · [空间叙事规则](skills/impress-story/references/spatial-story.md)
+[![Impress Story 手绘空间演示首屏：AI 外贸员，是怎么长出来的？](docs/demo-cover.webp)](https://agent.ksway.net/resources/talks/ai-sales-agent/#/cover)
+
+[查看实际演示效果](https://agent.ksway.net/resources/talks/ai-sales-agent/#/cover) · [Skill 入口](skills/impress-story/SKILL.md) · [空间叙事规则](skills/impress-story/references/spatial-story.md)
 
 > 在线链接是用这套方法制作并迭代的实际作品，不是初始化器一键生成的成品。每份演示的内容与构图仍需 AI 根据讲稿设计，并通过实际预览打磨。本项目不隶属于 Prezi。
 
